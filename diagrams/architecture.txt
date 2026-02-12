@@ -1,0 +1,28 @@
+RAW DATA (CSV)
+     |
+     v
+Amazon S3 (raw/)
+     |
+     | S3 Event Notification
+     v
+AWS Lambda
+     |
+     | Start Glue Workflow
+     v
+AWS Glue Workflow
+     |
+     |--> Glue Job 1 (Cleaning - PySpark)
+     |        |
+     |        v
+     |   S3 (processed/)
+     |
+     |--> Glue Job 2 (Analytics - PySpark)
+              |
+              v
+        S3 (curated/)
+              |
+              v
+        Amazon Athena (SQL)
+              |
+              v
+        Tableau Dashboard
